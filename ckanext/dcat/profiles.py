@@ -27,6 +27,7 @@ LOCN = Namespace('http://www.w3.org/ns/locn#')
 GSP = Namespace('http://www.opengis.net/ont/geosparql#')
 OWL = Namespace('http://www.w3.org/2002/07/owl#')
 SPDX = Namespace('http://spdx.org/rdf/terms#')
+RDF = Namespace('http://schema.org/item')
 
 GEOJSON_IMT = 'https://www.iana.org/assignments/media-types/application/vnd.geo+json'
 
@@ -833,6 +834,7 @@ class EuropeanDCATAPProfile(RDFProfile):
         for prefix, namespace in namespaces.iteritems():
             g.bind(prefix, namespace)
 
+        g.namespace_manager.bind('rdf', RDF, replace=True)
         g.add((dataset_ref, RDF.type, DCAT.Dataset))
 
         # Basic fields
@@ -1072,6 +1074,7 @@ class EuropeanDCATAPProfile(RDFProfile):
         for prefix, namespace in namespaces.iteritems():
             g.bind(prefix, namespace)
 
+        g.namespace_manager.bind('rdf', RDF, replace=True)
         g.add((catalog_ref, RDF.type, DCAT.Catalog))
 
         # Basic fields
